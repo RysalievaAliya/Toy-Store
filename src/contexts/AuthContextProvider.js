@@ -27,7 +27,7 @@ const AuthContextProvider = ({ children }) => {
 
   const login = async (formData, email) => {
     try {
-      const res = await axios.post(`${API}`, formData);
+      const res = await axios.post(`${API}/account/api/token/`, formData);
 
       console.log(res.data);
 
@@ -50,8 +50,7 @@ const AuthContextProvider = ({ children }) => {
       const Authorization = `Bearer ${token.access}`;
 
       let res = await axios.post(
-        `${API}
-        /account/api/token/refresh/`,
+        `${API}/account/api/token/refresh/`,
         {
           refresh: token.refresh,
         },
@@ -74,7 +73,7 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     setUser("");
-    navigate("/login");
+    navigate("/");
   }
   return (
     <authContext.Provider

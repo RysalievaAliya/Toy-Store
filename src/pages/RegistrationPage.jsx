@@ -126,6 +126,19 @@ export default function RegisterPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="password_confirm"
+                label="Password_confirm"
+                name="password_confirm"
+                autoComplete="password_confirm"
+                autoFocus
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                value={passwordConfirm}
+              />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"

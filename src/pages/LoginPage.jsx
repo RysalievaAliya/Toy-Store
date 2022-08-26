@@ -39,7 +39,7 @@ export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const handleSave = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     let formData = new FormData();
     formData.append("email", email);
@@ -129,7 +129,7 @@ export default function Login() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, bgcolor: "#e060d7", color: "black" }}
-                onClick={handleSave}
+                onClick={handleSubmit}
               >
                 Sign In
               </Button>
