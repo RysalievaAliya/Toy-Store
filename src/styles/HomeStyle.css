@@ -1,52 +1,94 @@
-#getStarted {
-    font-family: 'Libre Baskerville', serif !important;
-    font-family: 'Prata', serif !important;
-    color:darkslategray !important;
-    margin-bottom: 5% !important;
-    font-weight: bold !important;
+#mainCard {
+    max-width: 50%;
+    max-height: 25%;
+    margin: 2% !important;
+    justify-content: center !important;
+    margin-left: 25% !important;
+    transition: all 1s;
 }
 
-#homeButton {
-    font-family: 'Libre Baskerville', serif !important;
-    font-family: 'Prata', serif !important;
-    margin-bottom: 10% !important;
-    width: 30% !important;
-    height: 30% !important;
+#mainCard:hover {
+    max-width: 60%;
+    max-height: 30%;
+    margin-left: 22% !important;
 }
 
-#getStarted2 {
-    font-family: 'Libre Baskerville', serif !important;
-    font-family: 'Prata', serif !important;
-    color: white !important;
-    margin-bottom: 5% !important;
-    font-weight: bold !important;
+
+#content {
+    margin-left: 50%;
+    margin-right: 5%;
 }
 
-#homeButton2 {
-    background-color: white !important;
+#homeTitle {
+    margin: 2% !important;
+    margin-right: 5% !important;
+    color: #e91e63;
+    justify-content: center !important;
+    font-weight: 700 !important;
+    font-size: x-large;
+    margin-left: 3% !important;
+    font-family: 'Rubik Iso', cursive !important;
 }
 
-#getStarted3 {
-    font-family: 'Libre Baskerville', serif !important;
-    font-family: 'Prata', serif !important;
-    color: darkslategray !important;
-    margin-bottom: 10% !important;
-    font-weight: bold !important;
+#homeTitle2 {
+    margin-left: 69%;
+    font-weight: 700 !important;
+    font-size:x-large;
+    font-family: 'Rubik Iso', cursive !important;
+    color: rgb(26, 171, 38);
 }
 
-#homeButton3 {
-    background-color: black !important;
+#seeButton {
+    margin-left: 45%;
+    color:black;
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 
-h2 {
-    font-family: 'Libre Baskerville', serif !important;
-    font-family: 'Prata', serif !important;
-    color:black !important;
-    margin-top: 5% !important;
-    margin-left: 5% !important; 
+#seeButton:hover {
+    background-color: #e91e63;
 }
 
-#modelImg {
-    height: 10%;
-    width: 100%;
+#aboutP {
+    font-weight: 700 !important;
+    font-size:x-large;
+    margin: 4%;
+    font-family: 'Rubik Iso', cursive !important;
+    color: rgb(239, 202, 39);
+    margin-left: 6% !important;
+}
+
+#aboutDescr {
+    font-weight: 300 !important;
+    font-size: smaller;
+    margin: 3%;
+    font-family: 'Lemonada', cursive !important;
+    color:rgb(26, 18, 181) !important;
+}
+
+#aboutT {
+    font-weight: 700 !important;
+    font-size: x-large;
+    margin: 4%;
+    font-family: 'Rubik Iso', cursive !important;
+    color: #e91e63;
+    margin-left: 13% !important;
+}
+
+#offers {
+    font-weight: 700 !important;
+    font-size: x-large;
+    font-family: 'Rubik Iso', cursive !important;
+    color: rgb(26, 171, 38);
+    margin: 4%;
+}
+
+#contText {
+    font-family: 'Rubik Iso', cursive !important;
+    color: rgb(239, 202, 39);
+    margin-left: 69% !important;
+    margin-top: 0;
+    font-weight: 700 !important;
+    font-size: large;
+    margin-bottom: 6% !important;
 }

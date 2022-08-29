@@ -4,7 +4,6 @@ import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./MainRoutes";
 import { Box } from "@mui/material";
 import CartContextProvider from "./contexts/CartContextProvider";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,20 +11,8 @@ function App() {
       <AuthContextProvider>
         <ProductContextProvider>
           <CartContextProvider>
-            <Box
-              sx={{
-                width: "100%",
-                minHeight: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                position: "relative",
-              }}
-            >
-              <Box sx={{ width: "100%" }}>
-                <MainRoutes />
-                <Footer />
-              </Box>
-            </Box>
+            <Navbar/>
+            <MainRoutes/>
           </CartContextProvider>
         </ProductContextProvider>
       </AuthContextProvider>
@@ -34,3 +21,4 @@ function App() {
 }
 
 export default App;
+
