@@ -25,16 +25,6 @@ function App() {
                 <MainRoutes />
                 <Footer />
               </Box>
-              {/* <Box
-                sx={{
-                  position:"absolute",
-                  bottom: "0",
-                  width: "100%",
-                  zIndex: "2000",
-                }}
-              >
-                <Footer />
-              </Box> */}
             </Box>
           </CartContextProvider>
         </ProductContextProvider>
