@@ -4,7 +4,6 @@ import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./MainRoutes";
 import { Box } from "@mui/material";
 import CartContextProvider from "./contexts/CartContextProvider";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,32 +13,6 @@ function App() {
           <CartContextProvider>
             <Navbar/>
             <MainRoutes/>
-            {/* <Box
-              sx={{
-                width: "100%",
-                minHeight: "100vh",
-                display: "fixed",
-                justifyContent: "center",
-                position: "relative",
-              }}
-            >
-              <Navbar/>
-              <Box sx={{ width: "100%" }}>
-                <MainRoutes />
-                <Footer />
-              </Box>
-              <Box
-                sx={{
-                  position:"absolute",
-                  bottom: "0",
-                  width: "100%",
-                  zIndex: "2000",
-                }}
-              >
-                <MainRoutes />
-                <Footer />
-              </Box>
-            </Box> */}
           </CartContextProvider>
         </ProductContextProvider>
       </AuthContextProvider>
@@ -48,3 +21,4 @@ function App() {
 }
 
 export default App;
+

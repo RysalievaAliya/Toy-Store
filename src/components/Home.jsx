@@ -1,10 +1,3 @@
-
-// import { Button, Link, Paper } from "@mui/material";
-// import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import * as React from 'react';
-// import Grid from '@mui/material/Grid';
-// import Box from '@mui/material/Box';
-// import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import children from "../assets/icons/children.jpg";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -241,12 +234,3 @@ export default function Home() {
    </Box> 
   );
 }
-
-
-
-
-
-
-
-
-
