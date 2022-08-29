@@ -12,20 +12,23 @@ function App() {
       <AuthContextProvider>
         <ProductContextProvider>
           <CartContextProvider>
-            <Box
+            <Navbar/>
+            <MainRoutes/>
+            {/* <Box
               sx={{
                 width: "100%",
                 minHeight: "100vh",
-                display: "flex",
+                display: "fixed",
                 justifyContent: "center",
                 position: "relative",
               }}
             >
+              <Navbar/>
               <Box sx={{ width: "100%" }}>
                 <MainRoutes />
                 <Footer />
               </Box>
-              {/* <Box
+              <Box
                 sx={{
                   position:"absolute",
                   bottom: "0",
@@ -33,9 +36,10 @@ function App() {
                   zIndex: "2000",
                 }}
               >
+                <MainRoutes />
                 <Footer />
-              </Box> */}
-            </Box>
+              </Box>
+            </Box> */}
           </CartContextProvider>
         </ProductContextProvider>
       </AuthContextProvider>

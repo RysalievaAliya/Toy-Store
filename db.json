@@ -1,7 +1,6 @@
 {
   "products": [
     {
-
       "name": "BUTTER GLOSS",
       "description": "Fan Fave Buttery Gloss",
       "price": "5.00 $",
@@ -64,7 +63,8 @@
       "picture": "https://sdcdn.io/mac/us/mac_sku_M6JC02_1x1_0.png?width=1080&height=1080",
       "type": "tone creams",
       "id": 8
-    },{
+    },
+    {
       "name": "STUDIO SCULPT SPF 15 FOUNDATION",
       "description": "Warm neutral beige with rosy undertone for light to medium skin",
       "price": "41.00 $",
@@ -95,14 +95,6 @@
       "picture": "https://sdcdn.io/mac/us/mac_sku_SMXT26_1x1_0.png?width=1080&height=1080",
       "type": "tone creams",
       "id": 12
-    },
-    {
-      "name": "Dior",
-      "description": "Dior Forever Matte Skincare Foundation",
-      "price": "65.00 $",
-      "picture": "https://image.s5a.com/is/image/TheBay/3348901612081_main?wid=534&hei=712&qlt=90&resMode=sharp2&op_usm=0.9,1.0,8,0",
-      "type": "tone creams",
-      "id": 13
     },
     {
       "name": "Dior",
@@ -223,30 +215,6 @@
       "picture": "https://www.maybelline.com/~/media/mny/us/eye-makeup/eyeliner/tattoostudio-liquid-ink-eyeliner/maybelline-tattoo-studio-liquid-liner-ink-black-oward-seal.jpg?thn=0&w=380&hash=820F15CCAAA28044B66E61086A5D549E9EFD7A9A",
       "type": "eyeliner",
       "id": 28
-    },
-    {
-      "name": "CURVITUDE™",
-      "description": "EYELINER",
-      "price": "8.99 $",
-      "picture": "https://www.maybelline.com/~/media/mny/global/eye-makeup/eyeliner/curvitude-liner/maybelline-eyeliner-curvitude-liner-black-041554494198-o.jpg?thn=0&w=380&hash=9F4722C9C552AEE6634F3C78314F7F0DA2FE5CA8",
-      "type": "eyeliner",
-      "id": 29
-    },
-    {
-      "name": "MASTER PRECISE INK™",
-      "description": "METALLIC LIQUID EYELINER",
-      "price": "9.99 $",
-      "picture": "https://www.maybelline.com/~/media/mny/global/eye-makeup/eyeliner/master-precise-ink-metallic-liquid-liner/maybelline-eyeliner-master-precise-ink-metallic-liquid-liner-black-comet-041554541915-o.jpg?thn=0&w=380&hash=F202C317AC6F2D028F239FEF78C05BE26701D130",
-      "type": "eyeliner",
-      "id": 30
-    }
-  
-  ],
-  "users": [
-    {
-      "username":"admin",
-      "password": "admin"
-
     }
   ]
 }
