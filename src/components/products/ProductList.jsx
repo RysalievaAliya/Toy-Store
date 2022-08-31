@@ -51,7 +51,7 @@ const ProductList = () => {
         }}
       >
         {products ? (
-          currentData().map((item) => <ProductCard item={item} key={item.id} />)
+          products.map((item) => <ProductCard item={item} key={item.id} />)
         ) : (
           <Spinner animation="grow" sx={{ justifyContent: "center" }} />
         )}

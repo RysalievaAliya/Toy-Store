@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ACTIONS, JSON_API_PRODUCTS } from "../helpers/consts";
+import { ACTIONS } from "../helpers/consts";
+import { API_ADD_PRODUCT } from "../helpers/consts";
 
 export const productContext = createContext();
 
@@ -32,14 +33,12 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const addProduct = async (newProduct) => {
-    await axios.post(JSON_API_PRODUCTS, newProduct);
+    await axios.post(API_ADD_PRODUCT, newProduct);
     getProducts();
   };
-
+  console.log(`${API_ADD_PRODUCT}/`);
   const getProducts = async () => {
-    const { data } = await axios(
-      `${JSON_API_PRODUCTS}/${window.location.search}`
-    );
+    const { data } = await axios(`${API_ADD_PRODUCT}/toys/search/`);
 
     dispatch({
       type: ACTIONS.GET_PRODUCTS,
@@ -48,12 +47,12 @@ const ProductContextProvider = ({ children }) => {
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`${JSON_API_PRODUCTS}/${id}`);
+    await axios.delete(`${API_ADD_PRODUCT}/${id}`);
     getProducts();
   };
 
   const getProductDetails = async (id) => {
-    const { data } = await axios(`${JSON_API_PRODUCTS}/${id}`);
+    const { data } = await axios(`${API_ADD_PRODUCT}/${id}`);
     dispatch({
       type: ACTIONS.GET_PRODUCT_DETAILS,
       payload: data,
@@ -61,7 +60,7 @@ const ProductContextProvider = ({ children }) => {
   };
 
   const saveEditedProduct = async (newProduct) => {
-    await axios.patch(`${JSON_API_PRODUCTS}/${newProduct.id}`, newProduct);
+    await axios.patch(`${API_ADD_PRODUCT}/${newProduct.id}`, newProduct);
     getProducts();
   };
 

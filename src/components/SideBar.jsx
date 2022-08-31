@@ -1,75 +1,116 @@
-import SearchIcon from "@mui/icons-material/Search";
-import {
-  ButtonBase,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  InputAdornment,
-  Paper,
-  Radio,
-  RadioGroup,
-  styled,
-  TextField,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
 import { useProducts } from "../contexts/ProductContextProvider";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import "../styles/Sidebar.css";
+import { InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
-const SideBar = () => {
+export default function SideBar() {
   const { getProducts, fetchByParams } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const [search, setSearch] = React.useState(searchParams.get("q") || "");
+
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+  }, [search]);
+
+  useEffect(() => {
+    getProducts();
+  }, [searchParams]);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   const images = [
     {
-      url: "https://media.istockphoto.com/photos/make-up-cosmetics-products-against-pink-color-background-picture-id1221677097?k=20&m=1221677097&s=170667a&w=0&h=WV22Qu02bVAYoVJcJpMz037om38C7cpfUhuY-zaSJeY=",
-      title: "All",
-      width: "100%",
+      url: "https://cf.shopee.ph/file/4c006ddead76ddc0cab3bc9e99a1bda2",
+      title: "Plush Toys",
+      width: "20%",
+      id: 1,
     },
     {
-      url: "https://qvc.scene7.com/is/image/QVC/a/04/a462604.001?$aempdlarge$",
-      title: "Lipstics",
-      width: "100%",
+      url: "https://static3.depositphotos.com/1000865/118/i/950/depositphotos_1183767-stock-photo-toy-car.jpg",
+      title: "Toy Cars",
+      width: "20%",
+      id: 2,
     },
     {
-      url: "https://img.freepik.com/premium-psd/two-realistic-front-view-plastic-cosmetic-face-cream-jars-mockup-template_225210-178.jpg?w=2000",
-      title: "Creams",
-      width: "100%",
+      url: "https://ae01.alicdn.com/kf/H3caf0b2e90f7469f905e602c866b8d99L/23-Handmade-1-3-Bjd-Dolls-Full-Set-Large-60cm-Fashion-Pink-Girls-Princess-Ball-Jointed.jpg_Q90.jpg_.webp",
+      title: "Dolls",
+      width: "20%",
+      id: 3,
     },
     {
-      url: "https://post.healthline.com/wp-content/uploads/2020/09/face-cream-lotion-foundation-makeup-732x549-thumbnail-732x549.jpg",
-      title: "Tone creams",
-      width: "100%",
+      url: "https://www.businessinsider.in/thumb/msid-81507028,width-640,resizemode-4/Master.jpg",
+      title: "Educational Toys",
+      width: "20%",
+      id: 4,
     },
     {
-      url: "https://cdn.accentuate.io/35811088695449/1634756531721/Fully-Charged--Wands--swatch-on-white--1080x1080.jpg?v=1658853854930",
-      title: "mascara",
-      width: "100%",
+      url: "https://ae01.alicdn.com/kf/HTB1ALAoacrrK1RjSspaq6AREXXa8/Programmable-Robot-Toys-For-Kids-Boy-With-Intelligence-Diy-Remote-Control-Robot-Robotics-Kits-Programmer-Programmable.jpg_Q90.jpg_.webp",
+      title: "Robotics",
+      width: "20%",
+      id: 5,
     },
     {
-      url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-050921-best-waterproof-eyeliner-1620662691.png?crop=0.500xw:1.00xh;0.245xw,0&resize=640:*",
-      title: "eyeliners",
-      width: "100%",
+      url: "https://ae01.alicdn.com/kf/Hba2d143968c84871accf10656c428271Z/280pcs-Dreamy-Nail-Art-Sets-Nail-Art-Toys-Girls-Gifts-Pretend-Play-Safe-No-Toxic-For.jpg_Q90.jpg_.webp",
+      title: "For Girls",
+      width: "20%",
+      id: 6,
+    },
+    {
+      url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-best-toys-per-age-1-1635449252.png?crop=0.474xw:0.949xh;0.271xw,0.0288xh&resize=640:*",
+      title: "For Boys",
+      width: "20%",
+      id: 7,
+    },
+    {
+      url: "https://images-na.ssl-images-amazon.com/images/I/51ZbwxuM-WL.jpg",
+      title: "For Little Babies",
+      width: "20%",
+      id: 8,
+    },
+    {
+      url: "https://ae01.alicdn.com/kf/S50173981e2cf4f8ea05f96f34dbc1c3dh/6-Styles-Haikyuu-Anime-Figure-616-Kei-Tsukishima-Action-Figure-789-Ushijima-Wakatoshi-605-Kozume-Kenma.jpg_Q90.jpg_.webp",
+      title: "Anime Chibi Dolls",
+      width: "20%",
+      id: 9,
+    },
+    {
+      url: "https://img.joomcdn.net/745c82bf730e51473488fe4e43686d392d47dab1_original.jpeg",
+      title: "Sport Toys",
+      width: "20%",
+      id: 10,
     },
   ];
 
   const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: "relative",
-    height: "80px",
 
+    height: 100,
     [theme.breakpoints.down("sm")]: {
-      width: "100% !important",
-      height: 100,
+      width: "50% !important",
+      height: 50,
     },
     "&:hover, &.Mui-focusVisible": {
-      zIndex: 1,
+      zIndex: 0,
       "& .MuiImageBackdrop-root": {
         opacity: 0.15,
       },
       "& .MuiImageMarked-root": {
         opacity: 0,
       },
-      "& .MuiTypography-root": {},
+      "& .MuiTypography-root": {
+        border: "1px solid currentColor",
+      },
     },
   }));
 
@@ -112,95 +153,44 @@ const SideBar = () => {
     backgroundColor: theme.palette.common.white,
     position: "absolute",
     bottom: -2,
-    left: "calc(50% - 9px)",
+    left: "calc(50% 5px)",
     transition: theme.transitions.create("opacity"),
   }));
 
-  const [search, setSearch] = useState(searchParams.get("q") || "");
-
-  useEffect(() => {
-    setSearchParams({
-      q: search,
-    });
-  }, [search]);
-
-  useEffect(() => {
-    getProducts();
-  }, [searchParams]);
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
-    <Paper
-      sx={{
-        m: 0,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        p: 0,
-        maxHeight: "150vh",
-        marginLeft: 0,
-      }}
+    <Box
+      sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
     >
-      <Box>
-        <TextField
-          sx={{ mt: 5 }}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          id="input-with-icon-textfield"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
+      <TextField
+        sx={{ mt: 3 }}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        id="input-with-icon-textfield"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+        variant="outlined"
+      />
+      {images.map((image) => (
+        <ImageButton
+          focusRipple
+          key={image.title}
+          style={{
+            width: image.width,
           }}
-          variant="outlined"
-        />
-
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label" sx={{ mb: 2 }}>
-            Categories
-          </FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="all"
-            name="radio-buttons-group"
-            onChange={(e) => fetchByParams("type", e.target.value)}
-          >
-            <FormControlLabel value="all" control={<Radio />} label="All" />
-            <FormControlLabel
-              value="lipsticks"
-              control={<Radio />}
-              label="lipsticks"
-            />
-            <FormControlLabel
-              value="creams"
-              control={<Radio />}
-              label="creams"
-            />
-            <FormControlLabel
-              value="tone creams"
-              control={<Radio />}
-              label="tone creams"
-            />
-            <FormControlLabel
-              value="mascara"
-              control={<Radio />}
-              label="mascara"
-            />
-            <FormControlLabel
-              value="eyeliner"
-              control={<Radio />}
-              label="eyeliner"
-            />
-          </RadioGroup>
-        </FormControl>
-      </Box>
-    </Paper>
+        >
+          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+          <ImageBackdrop className="MuiImageBackdrop-root" />
+          <Image>
+            {image.title}
+            <ImageMarked className="MuiImageMarked-root" />
+          </Image>
+        </ImageButton>
+      ))}
+    </Box>
   );
-};
-
-export default SideBar;
+}

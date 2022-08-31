@@ -128,19 +128,33 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "#e060d7", color: "black" }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  bgcolor: "#e060d7",
+                  color: "black",
+                  "&:hover": { bgcolor: "#8125DC" },
+                }}
                 onClick={handleSubmit}
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link sx={{ color: "#0a000a" }} href="#" variant="body2">
+                  <Link
+                    sx={{ color: "#0a000a", "&:hover": { color: "#8125DC" } }}
+                    href="#"
+                    variant="body2"
+                  >
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link sx={{ color: "#0a000a" }} to="/register">
+                  <Link
+                    sx={{ color: "#0a000a", "&:hover": { color: "#8125DC" } }}
+                    to="/register"
+                    onClick={handleSubmit}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

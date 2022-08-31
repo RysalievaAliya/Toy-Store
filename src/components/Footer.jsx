@@ -17,8 +17,16 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 export default function Footer() {
   return (
     <Paper
-      sx={{ left: 0, bottom: 0, right: 0, width: "100%", color: "black", backgroundColor: "black", mt: "1rem", p : "1rem"
-}}
+      sx={{
+        left: 0,
+        bottom: 0,
+        right: 0,
+        width: "100%",
+        color: "black",
+        backgroundColor: "black",
+        mt: "1rem",
+        p: "1rem",
+      }}
       component="footer"
       square
       variant="outlined"
@@ -85,8 +93,7 @@ export default function Footer() {
             display: "flex",
             mb: 2,
           }}
-        >
-        </Box>
+        ></Box>
       </Container>
     </Paper>
   );

@@ -23,7 +23,6 @@ function App() {
             >
               <Box sx={{ width: "100%" }}>
                 <MainRoutes />
-                <Footer />
               </Box>
             </Box>
           </CartContextProvider>

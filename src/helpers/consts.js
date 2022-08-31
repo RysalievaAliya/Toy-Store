@@ -1,4 +1,4 @@
-import navigate from '../contexts/ProductContextProvider'
+import navigate from "../contexts/ProductContextProvider";
 
 export const ACTIONS = {
   GET_PRODUCTS: "GET_PRODUCTS",
@@ -10,13 +10,12 @@ export const CART = {
   GET_CART_LENGTH: "GET_CART_LENGTH",
 };
 
-
 export const navigateToRegister = () => {
-  navigate('/register');
-}
+  navigate("/register");
+};
 
 export const navigateToLogin = () => {
-  navigate('/login');
-}
+  navigate("/login");
+};
 
-export const JSON_API_PRODUCTS = "http://localhost:8000/products";
+export const API_ADD_PRODUCT = "https://toys-backend2022.herokuapp.com/toys";
