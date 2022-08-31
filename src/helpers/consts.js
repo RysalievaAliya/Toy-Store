@@ -19,4 +19,9 @@ export const navigateToLogin = () => {
   navigate('/login');
 }
 
+export const FAV = {
+  GET_FAV: "GET_FAV",
+  GET_FAV_LENGTH: "GET_FAV_LENGTH",
+};
+
 export const JSON_API_PRODUCTS = "http://localhost:8000/products";

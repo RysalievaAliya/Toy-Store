@@ -10,3 +10,8 @@ export const calcTotalPrice = (products) => {
     return (ac += cur.subPrice);
   }, 0);
 };
+
+export function getCountProductsInFavPage() {
+  const fav = JSON.parse(localStorage.getItem("favorite"));
+  return fav ? fav.products.length : 0;
+}

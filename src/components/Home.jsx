@@ -7,70 +7,79 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
-import { Button, Link } from "@mui/material";
+import { Button, FormControl, FormControlLabel, Link, Radio, RadioGroup } from "@mui/material"
+import { useProducts } from "../contexts/ProductContextProvider";
 
-const images = [
+const first = [
   {
     url: 'https://cf.shopee.ph/file/4c006ddead76ddc0cab3bc9e99a1bda2',
     title: 'Plush Toys',
     width: '20%',
-    id:1,
-  },
+    id: 1,
+  },];
+const second = [
   {
     url: 'https://static3.depositphotos.com/1000865/118/i/950/depositphotos_1183767-stock-photo-toy-car.jpg',
     title: 'Toy Cars',
     width: '20%',
-    id:2,
-  },
+    id: 2,
+  },];
+const third = [
   {
     url: 'https://ae01.alicdn.com/kf/H3caf0b2e90f7469f905e602c866b8d99L/23-Handmade-1-3-Bjd-Dolls-Full-Set-Large-60cm-Fashion-Pink-Girls-Princess-Ball-Jointed.jpg_Q90.jpg_.webp',
     title: 'Dolls',
     width: '20%',
-    id:3,
-  },
+    id: 3,
+  },];
+const fourth = [
   {
     url: 'https://www.businessinsider.in/thumb/msid-81507028,width-640,resizemode-4/Master.jpg',
     title: 'Educational Toys',
     width: '20%',
-    id:4,
-  },
+    id: 4,
+  },];
+const fifth = [
   {
     url: 'https://ae01.alicdn.com/kf/HTB1ALAoacrrK1RjSspaq6AREXXa8/Programmable-Robot-Toys-For-Kids-Boy-With-Intelligence-Diy-Remote-Control-Robot-Robotics-Kits-Programmer-Programmable.jpg_Q90.jpg_.webp',
     title: 'Robotics',
     width: '20%',
-    id:5,
-  },
+    id: 5,
+  },];
+const sixth = [
   {
     url: 'https://ae01.alicdn.com/kf/Hba2d143968c84871accf10656c428271Z/280pcs-Dreamy-Nail-Art-Sets-Nail-Art-Toys-Girls-Gifts-Pretend-Play-Safe-No-Toxic-For.jpg_Q90.jpg_.webp',
     title: 'For Girls',
     width: '20%',
-    id:6,
-  },
+    id: 6,
+  },];
+const seventh = [
   {
     url: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-best-toys-per-age-1-1635449252.png?crop=0.474xw:0.949xh;0.271xw,0.0288xh&resize=640:*',
     title: 'For Boys',
     width: '20%',
-    id:7,
-  },
+    id: 7,
+  },];
+const eighth = [
   {
     url: 'https://images-na.ssl-images-amazon.com/images/I/51ZbwxuM-WL.jpg',
     title: 'For Little Babies',
     width: '20%',
-    id:8,
-  },
+    id: 8,
+  },];
+const nineth = [
   {
     url: 'https://ae01.alicdn.com/kf/S50173981e2cf4f8ea05f96f34dbc1c3dh/6-Styles-Haikyuu-Anime-Figure-616-Kei-Tsukishima-Action-Figure-789-Ushijima-Wakatoshi-605-Kozume-Kenma.jpg_Q90.jpg_.webp',
     title: 'Anime Chibi Dolls',
     width: '20%',
-    id:9,
-  },
+    id: 9,
+  },];
+const tenth = [
   {
     url: 'https://img.joomcdn.net/745c82bf730e51473488fe4e43686d392d47dab1_original.jpeg',
     title: 'Sport Toys',
     width: '20%',
-    id:10,
-  },
-];
+    id: 10,
+  },];
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -147,6 +156,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Home() {
+  const { getProducts, fetchByParams } = useProducts();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -167,6 +177,7 @@ export default function Home() {
       </Box>
       <Card id="mainCard" sx={{ boxShadow: 24 }}>
         <CardMedia
+          id="imgCard"
           component="img"
           image={children}
           alt="childer"
@@ -188,37 +199,356 @@ export default function Home() {
       <Box id="aboutT">
         <h2>Also We Have also different types of toys for your child!</h2>
       </Box>
-      <Link href="/products" style={{ textDecoration: 'none' }}>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-        {images.map((image) => (
-          <ImageButton
-            focusRipple
-            key={image.title}
-            style={{
-              width: image.width,
-            }}>
-            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-            <ImageBackdrop className="MuiImageBackdrop-root" />
-            <Image>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                sx={{
-                  position: 'relative',
-                  p: 4,
-                  pt: 2,
-                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                }}
-              >
-                {image.title}
-                <ImageMarked className="MuiImageMarked-root" />
-              </Typography>
-            </Image>
-          </ImageButton>
-          ))}
-        </Box>
-      </Link>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="plushToys" control={<Radio />}>
+          <Link href="/products?q=plushToys" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {first.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="toyCars" control={<Radio />}>
+          <Link href="/products?q=toyCars" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {second.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="dolls" control={<Radio />}>
+          <Link href="/products?q=dolls" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {third.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="educationalToys" control={<Radio />}>
+          <Link href="/products?q=educationalToys" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {fourth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="robotics" control={<Radio />}>
+          <Link href="/products?q=robotics" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {fifth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="forGirls" control={<Radio />}>
+          <Link href="/products?q=forGirls" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {sixth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="forBoys" control={<Radio />}>
+          <Link href="/products?q=forBoys" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {seventh.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="forLittleBabies" control={<Radio />}>
+          <Link href="/products?q=forLittleBabies" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {eighth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="animeChibiDolls" control={<Radio />}>
+          <Link href="/products?q=animeChibiDolls" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {nineth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
+      <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
+        <FormControl value="sportToys" control={<Radio />}>
+          <Link href="/products?q=sportToys" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+              {tenth.map((image) => (
+                <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}>
+                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                  <ImageBackdrop className="MuiImageBackdrop-root" />
+                  <Image>
+                    <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                    >
+                      {image.title}
+                      <ImageMarked className="MuiImageMarked-root" />
+                    </Typography>
+                  </Image>
+                </ImageButton>
+              ))}
+            </Box>
+          </Link>
+        </FormControl>
+      </RadioGroup>
       <Box id="offers">
         <h2>
           Do You Have Some Questions or Some Offers to Do Our Online Store Better?

@@ -13,6 +13,12 @@
     margin-left: 22% !important;
 }
 
+#imgCard {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 
 #content {
     margin-left: 50%;

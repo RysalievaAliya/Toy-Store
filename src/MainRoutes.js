@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import FavoritePage from "./pages/FavoritePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -56,7 +57,12 @@ const MainRoutes = () => {
       link: "/favorite",
       element: <FavoritePage />,
       id: 9,
-    }
+    },
+    {
+      link: "/products/:id",
+      element: <ProductDetailsPage />,
+      id: 10,
+    },
   ];
   return (
     <Routes>
