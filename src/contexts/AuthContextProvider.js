@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const authContext = React.createContext();
 export const useAuth = () => useContext(authContext);
 
-const API = "http://35.239.251.89/";
+const API = "https://toys-backend2022.herokuapp.com/docs/?format=openapi";
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
@@ -13,40 +13,33 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const config = {
-    headers: { "Content-Type": "multipart/form-data" },
-  };
-
-  const register = async (email, password) => {
-    let formData = new FormData();
-    formData.append("username", email);
-    formData.append("password", password);
-
+  const register = async (formData) => {
     try {
-      const res = await axios.post(`${API}register/`, formData, config);
+      const res = await axios.post(`${API}/account/register/ `, formData);
       console.log(res);
       navigate("/login");
     } catch (error) {
+      console.log(Object.values(error.response.data).flat(2)[0]);
       console.log(error);
-      setError("Error occured");
+      setError(Object.values(error.response.data).flat(2)[0]);
     }
   };
 
-  const login = async (email, password) => {
-    let formData = new FormData();
-    formData.append("username", email);
-    formData.append("password", password);
-
+  const login = async (formData, email) => {
     try {
-      let res = await axios.post(`${API}api/token/`, formData, config);
-      navigate("/");
+      const res = await axios.post(`${API}/account/api/token/`, formData);
+
       console.log(res.data);
+
       localStorage.setItem("token", JSON.stringify(res.data));
       localStorage.setItem("username", email);
+
+      setUser(email);
       navigate("/");
     } catch (error) {
       console.log(error);
-      setError("Wrong username or password", error);
+      console.log([error.response.data.detail]);
+      setError([error.response.data.detail]);
     }
   };
 
@@ -57,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
       const Authorization = `Bearer ${token.access}`;
 
       let res = await axios.post(
-        `${API}api/token/refresh/`,
+        `${API}/account/api/token/refresh/`,
         {
           refresh: token.refresh,
         },
@@ -80,11 +73,11 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     setUser("");
+    navigate("/");
   }
-
   return (
     <authContext.Provider
-      value={{ register, login, checkAuth, logout, error, user }}
+      value={{ register, login, checkAuth, logout, error, setError, user }}
     >
       {children}
     </authContext.Provider>

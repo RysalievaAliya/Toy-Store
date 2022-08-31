@@ -1,21 +1,17 @@
-import React, { useState } from "react";
-import "../styles/AuthPage.css";
-// import Avatar from "@mui/material/Avatar";
-// import Button from "@mui/material/Button";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import TextField from "@mui/material/TextField";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-// import Paper from "@mui/material/Paper";
-// import Box from "@mui/material/Box";
-// import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
-import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
 
 function Copyright(props) {
@@ -38,97 +34,122 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function LoginPage() {
-  const navigate = useNavigate();
+export default function Login() {
+  const { login, error, setError } = useAuth();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  const { login, error } = useAuth();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [changeColorProfile, setChangeColorProfile] = useState("#adadad");
-  const [changeColorLock, setChangeColorLock] = useState("#adadad");
-
-  function handleLogin(email, password) {
-    login(email, password);
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    login(formData, email);
+  };
+  React.useEffect(() => {
+    setError("");
+  }, []);
 
   return (
-    <div className="auth-main">
-      <div className="auth-block">
-        <h3 className="auth-header">Sign In</h3>
-        <div className="auth__input-block">
-          <p>Username</p>
-          <div className="auth-input__form">
-            <label htmlFor="email">
-              <PersonOutlineIcon
-                id="usernameInp"
-                sx={{ color: changeColorProfile, transition: "all 100ms" }}
-                className="auth-input__icon"
-              />
-            </label>
-            <input
-              sx={{ color: "black" }}
-              placeholder="Type your username"
-              className="auth-input"
-              type="text"
-              id="email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={() => setChangeColorProfile("#8C2CEF")}
-              onBlur={() => setChangeColorProfile("#adadad")}
-            />
-          </div>
-        </div>
-        <div className="auth__input-block">
-          <p>Password</p>
-          <div className="auth-input__form">
-            <label htmlFor="password">
-              <LockOutlinedIcon
-                id="userpasswordInp"
-                sx={{ color: "black", transition: "all 100ms" }}
-                className="auth-input__icon"
-              />
-            </label>
-            <input
-              sx={{ color: "black" }}
-              placeholder="Type your password"
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setChangeColorLock("#8C2CEF")}
-              onBlur={() => setChangeColorLock("#adadad")}
-            />
-          </div>
-        </div>
-        {error ? (
-          <Typography sx={{ color: "red", m: 1 }}>{error}</Typography>
-        ) : null}
-        <button
-          sx={{ color: "black" }}
-          className="auth-btn"
-          onClick={() => handleLogin(email, password)}
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: `url("https://lt3.pigugroup.eu/uploaded/shutterstock_1849897198-min.jpg")`,
+            backgroundColor: (t) =>
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <Grid
+          sx={{ bgcolor: "#51b0ce" }}
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
         >
-          Sign In
-        </button>
-        <div className="auth-another">
-          <p className="auth-another__hint">Or Sign Up</p>
-          <button
-            sx={{ color: "black" }}
-            onClick={() => navigate("/register")}
-            className="auth-link"
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            SIGN UP
-          </button>
-        </div>
-      </div>
-    </div>
+            <Avatar sx={{ m: 1, bgcolor: "#d777de" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography sx={{ color: "#040304" }} component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <FormControlLabel
+                sx={{ color: "#0a000a" }}
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, bgcolor: "#e060d7", color: "black" }}
+                onClick={handleSubmit}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link sx={{ color: "#0a000a" }} href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link sx={{ color: "#0a000a" }} to="/register">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 }
