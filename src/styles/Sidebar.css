@@ -1,11 +1,9 @@
-.SideBar {
-  width: 100px;
-  height: auto;
-}
-.Paper {
-  width: auto;
-  height: 100px;
-  background-image: url(../image/misha.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+/* .css-13t4l7t {
+  display: flex;
+  flex-direction: column;
+} */
+
+#sidebar {
+  display: flex;
+  flex-direction: column !important;
 }
