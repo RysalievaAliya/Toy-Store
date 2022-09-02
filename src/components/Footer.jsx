@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Paper,
-  Container,
-  Typography,
-  Box,
-  Link,
-  IconButton,
-} from "@mui/material";
+import { Paper, Container, Box, Link } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -23,7 +16,7 @@ export default function Footer() {
         right: 0,
         width: "100%",
         color: "black",
-        backgroundColor: "black",
+        backgroundColor: "rgb(25, 155, 255)",
         mt: "1rem",
         p: "1rem",
       }}
@@ -31,18 +24,10 @@ export default function Footer() {
       square
       variant="outlined"
     >
-      <Container maxWidth="lg" sx={{ maxHeight: 120 }}>
+      <Container maxWidth="lg" id="foot">
         <Box
           sx={{
-            flexGrow: 1,
-            justifyContent: "center",
-            display: "flex",
-            my: 1,
-          }}
-        ></Box>
-        <Box
-          sx={{
-            display: "flex",
+            display: "fixed",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
@@ -50,40 +35,46 @@ export default function Footer() {
           }}
         >
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <InstagramIcon sx={{ mr: 7, color: "white" }} />
+            <InstagramIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <TelegramIcon sx={{ mr: 7, color: "white" }} />
+            <TelegramIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <WhatsAppIcon sx={{ mr: 7, color: "white" }} />
+            <WhatsAppIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <TwitterIcon sx={{ mr: 7, color: "white" }} />
+            <TwitterIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <MailOutlineIcon sx={{ mr: 7, color: "white" }} />
+            <MailOutlineIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
           <Link
+            style={{ textDecoration: "none" }}
             target="_blank"
-            href="https://github.com/RysalievaAliya/Cosmetics-store"
+            href="https://github.com/RysalievaAliya/Toy-Store"
           >
-            <GitHubIcon sx={{ mr: 7, color: "white" }} />
+            <GitHubIcon sx={{ mr: 7, color: "rgb(26, 18, 181)" }} />
           </Link>
         </Box>
         <Box

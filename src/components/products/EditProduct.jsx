@@ -4,18 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
 
 const EditProduct = () => {
-  const { getProductDetails, productDetails, saveEditedProduct } =
-    useProducts();
+  const { getProductDetails, oneProduct, saveEditedProduct } = useProducts();
 
-  const [product, setProduct] = useState(productDetails);
+  const [product, setProduct] = useState(oneProduct);
 
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   useEffect(() => {
-    setProduct(productDetails);
-  }, [productDetails]);
+    setProduct(oneProduct);
+  }, [oneProduct]);
 
   useEffect(() => {
     getProductDetails(id);
@@ -49,86 +48,92 @@ const EditProduct = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h6" sx={{ m: 2 }}>
-        Edit product
-      </Typography>
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Name"
-        variant="outlined"
-        color="red"
-        fullWidth
-        name="name"
-        onChange={handleInp}
-        value={product.name || ""}
-        focused
-      />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Description"
-        variant="outlined"
-        color="red"
-        fullWidth
-        name="description"
-        onChange={handleInp}
-        value={product.description || ""}
-        focused
-      />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Price"
-        variant="outlined"
-        color="red"
-        fullWidth
-        name="price"
-        onChange={handleInp}
-        value={product.price || ""}
-        focused
-      />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Picture"
-        variant="outlined"
-        color="red"
-        fullWidth
-        name="picture"
-        onChange={handleInp}
-        value={product.picture || ""}
-        focused
-      />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Type"
-        variant="outlined"
-        color="red"
-        fullWidth
-        name="type"
-        onChange={handleInp}
-        value={product.type || ""}
-        focused
-      />
-      <Button
-        sx={{
-          m: 1,
-          bgcolor: "black",
-          color: "#fff",
-          "&:hover": { bgcolor: "#8125DC" },
-        }}
-        variant="outlined"
-        fullWidth
-        size="large"
-        onClick={() => {
-          saveEditedProduct(product);
-          navigate("/products");
-        }}
-      >
-        SAVE PRODUCT
-      </Button>
+      {product ? (
+        <>
+          <Typography variant="h6" sx={{ m: 2 }}>
+            Edit product
+          </Typography>
+          <TextField
+            sx={{ m: 1 }}
+            id="standard-basic"
+            label="Name"
+            variant="outlined"
+            color="red"
+            fullWidth
+            name="name"
+            onChange={handleInp}
+            value={product.name || ""}
+            focused
+          />
+          <TextField
+            sx={{ m: 1 }}
+            id="standard-basic"
+            label="Description"
+            variant="outlined"
+            color="red"
+            fullWidth
+            name="description"
+            onChange={handleInp}
+            value={product.description || ""}
+            focused
+          />
+          <TextField
+            sx={{ m: 1 }}
+            id="standard-basic"
+            label="Price"
+            variant="outlined"
+            color="red"
+            fullWidth
+            name="price"
+            onChange={handleInp}
+            value={product.price || ""}
+            focused
+          />
+          <TextField
+            sx={{ m: 1 }}
+            id="standard-basic"
+            label="Picture"
+            variant="outlined"
+            color="red"
+            fullWidth
+            name="picture"
+            onChange={handleInp}
+            value={product.picture || ""}
+            focused
+          />
+          <TextField
+            sx={{ m: 1 }}
+            id="standard-basic"
+            label="Type"
+            variant="outlined"
+            color="red"
+            fullWidth
+            name="type"
+            onChange={handleInp}
+            value={product.type || ""}
+            focused
+          />
+          <Button
+            sx={{
+              m: 1,
+              bgcolor: "black",
+              color: "#fff",
+              "&:hover": { bgcolor: "#8125DC" },
+            }}
+            variant="outlined"
+            fullWidth
+            size="large"
+            onClick={() => {
+              saveEditedProduct(product);
+              navigate("/products");
+            }}
+          >
+            SAVE PRODUCT
+          </Button>
+        </>
+      ) : (
+        <h2>Loading....</h2>
+      )}
     </Box>
   );
 };

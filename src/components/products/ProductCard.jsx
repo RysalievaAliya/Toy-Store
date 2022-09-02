@@ -8,16 +8,21 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, IconButton, Rating, Stack } from "@mui/material";
 import { useCart } from "../../contexts/CartContextProvider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../../styles/card.css";
 import { useProducts } from "../../contexts/ProductContextProvider";
+import axios from "axios";
 
 export default function ProductCard({ item }) {
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart } = useCart();
+
+  // const getProducts = () => {
+  //   axios.get(`${API}/toys/{id}/`);
+
+  // };
 
   const navigate = useNavigate();
 
@@ -26,10 +31,19 @@ export default function ProductCard({ item }) {
       <CardMedia
         component="img"
         image={item.picture}
-        alt="green iguana"
+        alt=":("
         className="card_img"
       />
       <CardContent>
+        <Typography
+          gutterBottom
+          component="div"
+          sx={{
+            fontSize: "16px",
+          }}
+        >
+          {item.name}
+        </Typography>
         <Typography
           gutterBottom
           component="div"
@@ -89,7 +103,8 @@ export default function ProductCard({ item }) {
           <IconButton
             variant="outlined"
             onClick={() => addProductToCart(item)}
-            sx={{p: "5px",mb: "10px",}}>
+            sx={{ p: "5px", mb: "10px" }}
+          >
             <ShoppingCartIcon
               color={checkProductInCart(item.id) ? "primary" : ""}
               sx={{ mr: "5px" }}

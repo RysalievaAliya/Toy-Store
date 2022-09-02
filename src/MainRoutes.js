@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import FavoritePage from "./pages/FavoritePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -27,12 +28,12 @@ const MainRoutes = () => {
       id: 3,
     },
     {
-      link: "/edit/",
+      link: "/edit/:id",
       element: <EditProductPage />,
       id: 4,
     },
     {
-      link: "/toys",
+      link: "/products",
       element: <ProductsPage />,
       id: 5,
     },
@@ -50,6 +51,11 @@ const MainRoutes = () => {
       link: "/contact",
       element: <ContactUs />,
       id: 8,
+    },
+    {
+      link: "/favorite",
+      element: <FavoritePage />,
+      id: 9,
     },
   ];
   return (

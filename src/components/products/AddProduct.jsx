@@ -1,19 +1,30 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
 
 const AddProduct = () => {
-  const { addProduct } = useProducts();
+  const { addProducts, category, getCategories } = useProducts();
 
   const navigate = useNavigate();
 
   const [product, setProduct] = useState({
     name: "",
-    description: "",
+    desc: "",
     price: "",
     picture: "",
-    type: "",
+    stock: "",
+    categories: [1],
   });
 
   console.log(product);
@@ -33,6 +44,15 @@ const AddProduct = () => {
       setProduct(obj);
     }
   };
+
+  function handleSave() {
+    addProducts(product);
+    navigate("/products");
+  }
+  useEffect(() => {
+    getCategories();
+    console.log(category);
+  }, []);
 
   return (
     <Box
@@ -57,6 +77,7 @@ const AddProduct = () => {
         fullWidth
         name="name"
         onChange={handleInp}
+        value={product.name}
       />
       <TextField
         sx={{ m: 1 }}
@@ -65,8 +86,9 @@ const AddProduct = () => {
         label="Description"
         variant="outlined"
         fullWidth
-        name="description"
+        name="desc"
         onChange={handleInp}
+        value={product.desc}
       />
       <TextField
         sx={{ m: 1 }}
@@ -77,6 +99,7 @@ const AddProduct = () => {
         fullWidth
         name="price"
         onChange={handleInp}
+        value={product.price}
       />
       <TextField
         sx={{ m: 1 }}
@@ -87,17 +110,37 @@ const AddProduct = () => {
         fullWidth
         name="picture"
         onChange={handleInp}
+        value={product.picture}
       />
       <TextField
         sx={{ m: 1 }}
         color="secondary"
         id="standard-basic"
-        label="Type"
+        label="Stock"
         variant="outlined"
         fullWidth
-        name="type"
+        name="stock"
         onChange={handleInp}
+        value={product.stock}
       />
+
+      <FormControl sx={{ mt: 1 }} fullWidth>
+        <InputLabel id="demo-simple-select-label">Specs</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Категории"
+          onChange={handleInp}
+          value={product.categories || 1}
+          name="categories"
+        >
+          {category?.map((item) => (
+            <MenuItem value={[item.id]} key={item.id} onChange={handleInp}>
+              {item.title}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <Button
         sx={{
           m: 1,
@@ -108,10 +151,7 @@ const AddProduct = () => {
         variant="outlined"
         fullWidth
         size="large"
-        onClick={() => {
-          addProduct(product);
-          navigate("/toys");
-        }}
+        onClick={handleSave}
       >
         ADD PRODUCT
       </Button>

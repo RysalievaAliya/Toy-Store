@@ -58,12 +58,12 @@ export default function Cart() {
   }
 
   const trHeadStyle = {
-    backgroundColor: "black !important",
+    backgroundColor: "blue !important",
   };
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table sx={{ minWidth: 700, width:"100% !important" }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell sx={trHeadStyle}>Picture</StyledTableCell>
