@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useCart } from "../contexts/CartContextProvider";
 import { Box } from "@mui/system";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, Link, TextField, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -126,7 +126,7 @@ export default function Cart() {
       <Box sx={{ m: 5 }}>
         <Typography variant="h6" component="div">
           Total price: {cart?.totalPrice}
-          <Link href="/" style={{ textDecoration: 'none' }}>
+          <Link href="/payment" style={{ textDecoration: 'none' }}>
             <Button onClick={cartCleaner}>BUY NOW</Button>
           </Link>
         </Typography>
