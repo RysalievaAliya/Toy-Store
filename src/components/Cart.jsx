@@ -126,7 +126,7 @@ export default function Cart() {
       <Box sx={{ m: 5 }}>
         <Typography variant="h6" component="div">
           Total price: {cart?.totalPrice}
-          <Link href="/" style={{ textDecoration: 'none' }}>
+          <Link href="/payment" style={{ textDecoration: 'none' }}>
             <Button onClick={cartCleaner}>BUY NOW</Button>
           </Link>
         </Typography>
