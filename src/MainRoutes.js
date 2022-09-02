@@ -8,7 +8,6 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import RegistrationPage from "./pages/RegistrationPage";
-import FavoritePage from "./pages/FavoritePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import PaymentMethod from "./pages/PaymentMethod";
 
