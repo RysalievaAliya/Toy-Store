@@ -1,4 +1,9 @@
-.css-13t4l7t {
+/* .css-13t4l7t {
   display: flex;
   flex-direction: column;
+} */
+
+#sidebar {
+  display: flex;
+  flex-direction: column !important;
 }

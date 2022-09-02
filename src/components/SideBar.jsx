@@ -158,7 +158,7 @@ export default function SideBar() {
   }));
 
   return (
-    <Box
+    <Box id="sidebar"
       sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
     >
       <TextField

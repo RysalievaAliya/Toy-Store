@@ -1,0 +1,56 @@
+.pay {
+    width: auto;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../assets/icons/lego.jpg');
+}
+
+#labelPay {
+    width: 50% !important;
+    justify-content: center !important;
+    margin: auto;
+    text-align: center;
+    font-family: 'Rubik Iso', cursive !important;
+    color: white;
+}
+
+#payInp {
+    background-color: transparent;
+    border-radius: 5px;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    /* width: 50% !important; */
+}
+
+/* #cvcAndDate (
+    background-color: white;
+) */
+
+#mainBox {
+    max-width: 50% !important;
+    background-color: white !important;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 5%;
+}
+
+h4 {
+    font-family: 'Rubik Iso', cursive !important;
+    font-weight: 1000 !important;
+    font-weight: bold !important ;
+}
+
+#butt {
+    justify-content:center;
+    gap: 2;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width: 10%;
+    margin-right: 45%;
+    margin-left: 45%;
+    margin-top: 5%;
+    background-color: #e91e63;
+    text-decoration: none;
+}

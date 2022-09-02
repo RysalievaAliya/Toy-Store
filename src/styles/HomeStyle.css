@@ -13,6 +13,12 @@
     margin-left: 22% !important;
 }
 
+#imgCard {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 
 #content {
     margin-left: 50%;
@@ -91,4 +97,9 @@
     font-weight: 700 !important;
     font-size: large;
     margin-bottom: 6% !important;
+}
+
+#cardIMGs {
+    flex-direction: row !important;
+    display: 'flex' !important;
 }

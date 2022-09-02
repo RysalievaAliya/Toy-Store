@@ -10,10 +10,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, IconButton, Rating, Stack } from "@mui/material";
+import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useCart } from "../../contexts/CartContextProvider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../../styles/card.css";
 import { useProducts } from "../../contexts/ProductContextProvider";
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 export default function ProductCard({ item }) {
   const { deleteProduct } = useProducts();
@@ -67,11 +69,27 @@ export default function ProductCard({ item }) {
 
       <Stack spacing={1} className="rating_button">
         <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+        <Box>
+          <IconButton
+            variant="outlined"
+            onClick={() => addProductToCart(item)}
+            sx={{
+              p: "5px",
+              mb: "10px",
+            }}
+          >
+            <ShoppingCartIcon
+              color={checkProductInCart(item.id) ? "primary" : ""}
+              sx={{ mr: "5px" }}
+            />
+          </IconButton>
+          <StarOutlineIcon color={checkProductInCart(item.id) ? "primary" : ""}
+            sx={{ mr: "5px" }} />
+        </Box>
       </Stack>
 
       <CardActions className={"button"}>
         <Button
-          sx={{ color: "black" }}
           startIcon={<DeleteIcon />}
           onClick={() => deleteProduct(item.id)}
         >
@@ -79,23 +97,18 @@ export default function ProductCard({ item }) {
         </Button>
 
         <Button
-          sx={{ color: "black" }}
           startIcon={<EditIcon />}
           onClick={() => navigate(`/edit/${item.id}`)}
         >
           EDIT
         </Button>
-        <Box>
-          <IconButton
-            variant="outlined"
-            onClick={() => addProductToCart(item)}
-            sx={{p: "5px",mb: "10px",}}>
-            <ShoppingCartIcon
-              color={checkProductInCart(item.id) ? "primary" : ""}
-              sx={{ mr: "5px" }}
-            />
-          </IconButton>
-        </Box>
+
+        <Button
+          startIcon={<MoreHorizIcon />}
+          onClick={() => navigate(`/products/${item.id}`)}
+        >
+          MORE
+        </Button>
       </CardActions>
     </Card>
   );

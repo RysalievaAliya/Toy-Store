@@ -18,4 +18,5 @@ export const navigateToLogin = () => {
   navigate("/login");
 };
 
+export const JSON_API_PRODUCTS = "http://localhost:8000/products";
 export const API_ADD_PRODUCT = "https://toys-backend2022.herokuapp.com/toys";

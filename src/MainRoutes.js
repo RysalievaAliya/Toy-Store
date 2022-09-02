@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import FavoritePage from "./pages/FavoritePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import PaymentMethod from "./pages/PaymentMethod";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -53,10 +55,15 @@ const MainRoutes = () => {
       id: 8,
     },
     {
-      link: "/favorite",
-      element: <FavoritePage />,
+      link: "/products/:id",
+      element: <ProductDetailsPage />,
       id: 9,
-    }
+    },
+    {
+      link: "/payment",
+      element: <PaymentMethod />,
+      id: 10,
+    },
   ];
   return (
     <Routes>
