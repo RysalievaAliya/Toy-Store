@@ -29,12 +29,12 @@ const MainRoutes = () => {
       id: 3,
     },
     {
-      link: "/edit/",
+      link: "/edit/:id",
       element: <EditProductPage />,
       id: 4,
     },
     {
-      link: "/toys",
+      link: "/products",
       element: <ProductsPage />,
       id: 5,
     },

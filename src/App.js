@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import AuthContextProvider from "./contexts/AuthContextProvider";
 import ProductContextProvider from "./contexts/ProductContextProvider";
 import MainRoutes from "./MainRoutes";
-import { Box } from "@mui/material";
 import CartContextProvider from "./contexts/CartContextProvider";
 
 function App() {
@@ -11,8 +10,13 @@ function App() {
       <AuthContextProvider>
         <ProductContextProvider>
           <CartContextProvider>
+<<<<<<< HEAD
+            <Navbar />
+            <MainRoutes />
+=======
             <Navbar/>
             <MainRoutes/>
+>>>>>>> ed4b293146f5c00daec43457bad1c5320973144f
           </CartContextProvider>
         </ProductContextProvider>
       </AuthContextProvider>
@@ -21,4 +25,3 @@ function App() {
 }
 
 export default App;
-

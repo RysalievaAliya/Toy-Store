@@ -8,18 +8,23 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Box, IconButton, Rating, Stack } from "@mui/material";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useCart } from "../../contexts/CartContextProvider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../../styles/card.css";
 import { useProducts } from "../../contexts/ProductContextProvider";
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import axios from "axios";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 
 export default function ProductCard({ item }) {
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart } = useCart();
+
+  // const getProducts = () => {
+  //   axios.get(`${API}/toys/{id}/`);
+
+  // };
 
   const navigate = useNavigate();
 
@@ -28,10 +33,19 @@ export default function ProductCard({ item }) {
       <CardMedia
         component="img"
         image={item.picture}
-        alt="green iguana"
+        alt=":("
         className="card_img"
       />
       <CardContent>
+        <Typography
+          gutterBottom
+          component="div"
+          sx={{
+            fontSize: "16px",
+          }}
+        >
+          {item.name}
+        </Typography>
         <Typography
           gutterBottom
           component="div"
@@ -83,8 +97,10 @@ export default function ProductCard({ item }) {
               sx={{ mr: "5px" }}
             />
           </IconButton>
-          <StarOutlineIcon color={checkProductInCart(item.id) ? "primary" : ""}
-            sx={{ mr: "5px" }} />
+          <StarOutlineIcon
+            color={checkProductInCart(item.id) ? "primary" : ""}
+            sx={{ mr: "5px" }}
+          />
         </Box>
       </Stack>
 
@@ -102,6 +118,18 @@ export default function ProductCard({ item }) {
         >
           EDIT
         </Button>
+        <Box>
+          <IconButton
+            variant="outlined"
+            onClick={() => addProductToCart(item)}
+            sx={{ p: "5px", mb: "10px" }}
+          >
+            <ShoppingCartIcon
+              color={checkProductInCart(item.id) ? "primary" : ""}
+              sx={{ mr: "5px" }}
+            />
+          </IconButton>
+        </Box>
 
         <Button
           startIcon={<MoreHorizIcon />}
