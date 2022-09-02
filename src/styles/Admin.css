@@ -1,0 +1,7 @@
+.Admin {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../image/porovozik.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

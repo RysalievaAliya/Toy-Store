@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const authContext = React.createContext();
 export const useAuth = () => useContext(authContext);
 
-const API = "https://toys-backend2022.herokuapp.com/docs/?format=openapi";
+const API = "https://toys-backend2022.herokuapp.com";
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");

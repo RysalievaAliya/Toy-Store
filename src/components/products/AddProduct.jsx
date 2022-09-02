@@ -101,16 +101,16 @@ const AddProduct = () => {
       <Button
         sx={{
           m: 1,
-          bgcolor: "black",
+          bgcolor: "#e91e63",
           color: "white",
-          "&:hover": { bgcolor: "pink" },
+          "&:hover": { bgcolor: "black" },
         }}
         variant="outlined"
         fullWidth
         size="large"
         onClick={() => {
           addProduct(product);
-          navigate("/products");
+          navigate("/toys");
         }}
       >
         ADD PRODUCT

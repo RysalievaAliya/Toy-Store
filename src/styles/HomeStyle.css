@@ -98,3 +98,8 @@
     font-size: large;
     margin-bottom: 6% !important;
 }
+
+#cardIMGs {
+    flex-direction: row !important;
+    display: 'flex' !important;
+}

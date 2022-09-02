@@ -10,6 +10,7 @@ import ProductsPage from "./pages/ProductsPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import FavoritePage from "./pages/FavoritePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import PaymentMethod from "./pages/PaymentMethod";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -29,12 +30,12 @@ const MainRoutes = () => {
       id: 3,
     },
     {
-      link: "/edit/:id",
+      link: "/edit/",
       element: <EditProductPage />,
       id: 4,
     },
     {
-      link: "/products",
+      link: "/toys",
       element: <ProductsPage />,
       id: 5,
     },
@@ -54,13 +55,13 @@ const MainRoutes = () => {
       id: 8,
     },
     {
-      link: "/favorite",
-      element: <FavoritePage />,
+      link: "/products/:id",
+      element: <ProductDetailsPage />,
       id: 9,
     },
     {
-      link: "/products/:id",
-      element: <ProductDetailsPage />,
+      link: "/payment",
+      element: <PaymentMethod />,
       id: 10,
     },
   ];
