@@ -10,13 +10,8 @@ function App() {
       <AuthContextProvider>
         <ProductContextProvider>
           <CartContextProvider>
-<<<<<<< HEAD
             <Navbar />
             <MainRoutes />
-=======
-            <Navbar/>
-            <MainRoutes/>
->>>>>>> ed4b293146f5c00daec43457bad1c5320973144f
           </CartContextProvider>
         </ProductContextProvider>
       </AuthContextProvider>
